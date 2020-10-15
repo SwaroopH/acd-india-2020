@@ -29,7 +29,7 @@ poolWriter.on('connection', function(connection) {
 
 app.get('/', async(req, res) => {
 	try {
-		const [rows] = await poolWriter.execute('SELECT id, ctime FROM users LIMIT 5');
+		const [rows] = await poolWriter.execute('SELECT id, ctime FROM users ORDER by id DESC LIMIT 5');
 		res.json({success: true, data: rows});
 	}
 	catch (e){
